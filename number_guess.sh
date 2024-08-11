@@ -30,7 +30,33 @@ MAIN(){
 
   echo "Guess the secret number between 1 and 1000:"
 
-  # GUESS
+  GUESS
+  
+
+  echo "You guessed it in $ATTEMP tries. The secret number was $SECRET_NUMBER. Nice job!"
+
 }
+
+GUESS(){
+  read USER_NUMBER
+
+  if [[ ! $USER_NUMBER =~ ^[0-9]+$ ]]
+  then
+    echo "That is not an integer, guess again:"
+    GUESS
+  else  
+    ((ATTEMP++))
+
+    if [[ $USER_NUMBER -gt $SECRET_NUMBER ]]
+    then
+      echo "It's lower than that, guess again:"
+      GUESS
+    elif [[ $USER_NUMBER -lt $SECRET_NUMBER ]]
+    then 
+      echo "It's higher than that, guess again:"  
+      GUESS
+    fi
+  fi
+}   
 
 MAIN
