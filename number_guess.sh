@@ -27,6 +27,10 @@ MAIN(){
         echo "Welcome back, $(echo $USERNAME | sed -r 's/^ *| *$//g')! You have played $(echo $GAMES_PLAYED | sed -r 's/^ *| *$//g') games, and your best game took $(echo $BEST_GAME | sed -r 's/^ *| *$//g') guesses."
     done
   fi
+
+  echo "Guess the secret number between 1 and 1000:"
+
+  # GUESS
 }
 
 MAIN
