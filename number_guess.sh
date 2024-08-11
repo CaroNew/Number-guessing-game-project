@@ -36,7 +36,7 @@ MAIN(){
   INSERT_GAMES_PLAYED=$($PSQL "UPDATE users SET games_played=games_played+1 WHERE user_id=$USER_ID")
   INSERT_ATTEMPS=$($PSQL "INSERT INTO games(user_id, attemps) VALUES($USER_ID, $ATTEMP)")
 
-  echo "You guessed it in $ATTEMP tries. The secret number was $SECRET_NUMBER. Nice job!"
+  # echo "You guessed it in $ATTEMP tries. The secret number was $SECRET_NUMBER. Nice job!"
 
 }
 
@@ -58,6 +58,8 @@ GUESS(){
     then 
       echo "It's higher than that, guess again:"  
       GUESS
+    else
+       echo "You guessed it in $ATTEMP tries. The secret number was $SECRET_NUMBER. Nice job!"
     fi
   fi
 }   
