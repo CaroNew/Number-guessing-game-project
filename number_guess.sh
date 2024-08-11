@@ -11,7 +11,7 @@ MAIN(){
   read USERNAME
 
   # search username in db
-  USER_ID=$($PSQL "SELECT * FROM users WHERE name='$USERNAME'")
+  USER_ID=$($PSQL "SELECT user_id FROM users WHERE name='$USERNAME'")
 
   # if don't exits
   if [[ -z $USER_ID ]]
@@ -32,6 +32,9 @@ MAIN(){
 
   GUESS
   
+  # save number of times played y number of attempts
+  INSERT_GAMES_PLAYED=$($PSQL "UPDATE users SET games_played=games_played+1 WHERE user_id=$USER_ID")
+  INSERT_ATTEMPS=$($PSQL "INSERT INTO games(user_id, attemps) VALUES($USER_ID, $ATTEMP)")
 
   echo "You guessed it in $ATTEMP tries. The secret number was $SECRET_NUMBER. Nice job!"
 
